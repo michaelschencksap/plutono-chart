@@ -9,4 +9,5 @@ maintainers:
   - name: credativ
 
 version: 0.1.0
+appVersion: main
 
