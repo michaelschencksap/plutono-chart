@@ -356,14 +356,14 @@ containers:
       - name: SCRIPT
         value: {{ quote . }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_USER) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_USER) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_USERNAME
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.userKey | default "admin-user" }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_PASSWORD) (not .Values.env.GF_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_PASSWORD) (not .Values.env.PL_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_PASSWORD
         valueFrom:
           secretKeyRef:
@@ -468,14 +468,14 @@ containers:
         value: "{{ . }}"
       {{- end }}
       {{- if not .Values.sidecar.dashboards.skipReload }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_USER) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_USER) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_USERNAME
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.userKey | default "admin-user" }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_PASSWORD) (not .Values.env.GF_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_PASSWORD) (not .Values.env.PL_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_PASSWORD
         valueFrom:
           secretKeyRef:
@@ -574,14 +574,14 @@ containers:
       - name: SCRIPT
         value: "{{ .Values.sidecar.datasources.script }}"
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_USER) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_USER) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_USERNAME
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.userKey | default "admin-user" }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_PASSWORD) (not .Values.env.GF_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_PASSWORD) (not .Values.env.PL_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_PASSWORD
         valueFrom:
           secretKeyRef:
@@ -678,14 +678,14 @@ containers:
       - name: SCRIPT
         value: "{{ .Values.sidecar.notifiers.script }}"
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_USER) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_USER) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_USERNAME
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.userKey | default "admin-user" }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_PASSWORD) (not .Values.env.GF_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_PASSWORD) (not .Values.env.PL_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_PASSWORD
         valueFrom:
           secretKeyRef:
@@ -782,14 +782,14 @@ containers:
       - name: SKIP_TLS_VERIFY
         value: "{{ . }}"
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_USER) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_USER) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_USERNAME
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.userKey | default "admin-user" }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_PASSWORD) (not .Values.env.GF_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_PASSWORD) (not .Values.env.PL_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
       - name: REQ_PASSWORD
         valueFrom:
           secretKeyRef:
@@ -1002,52 +1002,52 @@ containers:
         valueFrom:
           fieldRef:
             fieldPath: status.podIP
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_USER) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
-      - name: GF_SECURITY_ADMIN_USER
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_USER) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      - name: PL_SECURITY_ADMIN_USER
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.userKey | default "admin-user" }}
       {{- end }}
-      {{- if and (not .Values.env.GF_SECURITY_ADMIN_PASSWORD) (not .Values.env.GF_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
-      - name: GF_SECURITY_ADMIN_PASSWORD
+      {{- if and (not .Values.env.PL_SECURITY_ADMIN_PASSWORD) (not .Values.env.PL_SECURITY_ADMIN_PASSWORD__FILE) (not .Values.env.PL_SECURITY_DISABLE_INITIAL_ADMIN_CREATION) }}
+      - name: PL_SECURITY_ADMIN_PASSWORD
         valueFrom:
           secretKeyRef:
             name: {{ (tpl .Values.admin.existingSecret .) | default (include "plutono.fullname" .) }}
             key: {{ .Values.admin.passwordKey | default "admin-password" }}
       {{- end }}
       {{- if .Values.plugins }}
-      - name: GF_INSTALL_PLUGINS
+      - name: PL_INSTALL_PLUGINS
         valueFrom:
           configMapKeyRef:
             name: {{ include "plutono.fullname" . }}
             key: plugins
       {{- end }}
       {{- if .Values.smtp.existingSecret }}
-      - name: GF_SMTP_USER
+      - name: PL_SMTP_USER
         valueFrom:
           secretKeyRef:
             name: {{ .Values.smtp.existingSecret }}
             key: {{ .Values.smtp.userKey | default "user" }}
-      - name: GF_SMTP_PASSWORD
+      - name: PL_SMTP_PASSWORD
         valueFrom:
           secretKeyRef:
             name: {{ .Values.smtp.existingSecret }}
             key: {{ .Values.smtp.passwordKey | default "password" }}
       {{- end }}
       {{- if .Values.imageRenderer.enabled }}
-      - name: GF_RENDERING_SERVER_URL
+      - name: PL_RENDERING_SERVER_URL
         value: http://{{ include "plutono.fullname" . }}-image-renderer.{{ include "plutono.namespace" . }}:{{ .Values.imageRenderer.service.port }}/render
-      - name: GF_RENDERING_CALLBACK_URL
+      - name: PL_RENDERING_CALLBACK_URL
         value: {{ .Values.imageRenderer.plutonoProtocol }}://{{ include "plutono.fullname" . }}.{{ include "plutono.namespace" . }}:{{ .Values.service.port }}/{{ .Values.imageRenderer.plutonoSubPath }}
       {{- end }}
-      - name: GF_PATHS_DATA
+      - name: PL_PATHS_DATA
         value: {{ (get .Values "plutono.ini").paths.data }}
-      - name: GF_PATHS_LOGS
+      - name: PL_PATHS_LOGS
         value: {{ (get .Values "plutono.ini").paths.logs }}
-      - name: GF_PATHS_PLUGINS
+      - name: PL_PATHS_PLUGINS
         value: {{ (get .Values "plutono.ini").paths.plugins }}
-      - name: GF_PATHS_PROVISIONING
+      - name: PL_PATHS_PROVISIONING
         value: {{ (get .Values "plutono.ini").paths.provisioning }}
       {{- range $key, $value := .Values.envValueFrom }}
       - name: {{ $key | quote }}
