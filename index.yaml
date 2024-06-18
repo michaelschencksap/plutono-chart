@@ -1,0 +1,19 @@
+apiVersion: v1
+entries:
+  plutono:
+  - apiVersion: v2
+    appVersion: main
+    created: "2024-06-18T20:48:06.738534812Z"
+    description: A plutono Helm chart for Kubernetes
+    digest: 5987f7932dcf8975479b7c7423f232f83927ddf4ef668a9e8dfc27de4aa68873
+    home: https://gyptazy.ch/blog/plutono-vali-a-grafana-7-5-fork-under-the-apache-2-0-license/
+    maintainers:
+    - name: credativ
+    name: plutono
+    sources:
+    - https://github.com/credativ/plutono
+    type: application
+    urls:
+    - https://github.com/michaelschencksap/plutono-chart/releases/download/plutono-0.1.0/plutono-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-06-18T20:48:06.73856589Z"
