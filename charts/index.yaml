@@ -11,5 +11,6 @@ entries:
     - https://github.com/credativ/plutono
     type: application
     urls:
-    - https://github.com/credativ/helmcharts/plutono-0.1.0.tgz
+# - https://github.com/credativ/helmcharts/plutono-0.1.0.tgz
+    - https://credativ.github.io/helmcharts/charts/plutono-0.1.0.tgz
     version: 0.1.0
