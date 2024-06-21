@@ -53,9 +53,9 @@ initContainers:
   - name: download-dashboards
     {{- $registry := .Values.global.imageRegistry | default .Values.downloadDashboardsImage.registry -}}
     {{- if .Values.downloadDashboardsImage.sha }}
-    #image: "{{ $registry }}/{{ .Values.downloadDashboardsImage.repository }}:{{ .Values.downloadDashboardsImage.tag }}@sha256:{{ .Values.downloadDashboardsImage.sha }}"
-   # {{- else }}
-  #  image: "{{ $registry }}/{{ .Values.downloadDashboardsImage.repository }}:{{ .Values.downloadDashboardsImage.tag }}"
+    image: "{{ $registry }}/{{ .Values.downloadDashboardsImage.repository }}:{{ .Values.downloadDashboardsImage.tag }}@sha256:{{ .Values.downloadDashboardsImage.sha }}"
+    {{- else }}
+    image: "{{ $registry }}/{{ .Values.downloadDashboardsImage.repository }}:{{ .Values.downloadDashboardsImage.tag }}"
     {{- end }}
     imagePullPolicy: {{ .Values.downloadDashboardsImage.pullPolicy }}
     command: ["/bin/sh"]
